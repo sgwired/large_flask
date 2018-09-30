@@ -1,4 +1,4 @@
-from flask import render_template, request, Blueprint
+from flask import render_template, request, Blueprint, abort
 
 core = Blueprint('core', __name__)
 
@@ -9,4 +9,7 @@ def index():
 @core.route('/info')
 def info():
   return render_template('info.html')
-  
+
+# @core.route('/someerror')
+# def some():
+#   return abort(500)
