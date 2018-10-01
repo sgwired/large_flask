@@ -1,8 +1,10 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo
-from wtforms imnport ValidationError
+from wtforms import ValidationError
 from flask_wtf.file import FileField, FileAllowed
+
+#USERS Imports
 from flask_login import current_user
 from pupblog.models import User
 
@@ -12,6 +14,7 @@ class LoginForm(FlaskForm):
   password = PasswordField('Password', validators=[DataRequired()])
   submit = SubmitField('Log In')
 
+
 class RegistrationForm(FlaskForm):
   email = StringField('Email', validators=[DataRequired(), Email()])
   username = StringField('UserName', validators=[DataRequired()])
@@ -20,23 +23,24 @@ class RegistrationForm(FlaskForm):
   submit = SubmitField('Register')
 
   def check_email(self):
-    if User.query.filter_by(email=field.data).first()
+    if User.query.filter_by(email=field.data).first():
       raise ValidationError('Your email has been registered already!')
 
   def check_username(self):
-    if User.query.filter_by(username=field.data).first()
+    if User.query.filter_by(username=field.data).first():
       raise ValidationError('Your username has been registered already!')
+
 
 class UpdateUserForm(FlaskForm):
   email = StringField('Email', validators=[DataRequired(), Email()])
-  username = StringField('UserName', validators=[DataRequired])
+  username = StringField('UserName', validators=[DataRequired()])
   picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
   submit = SubmitField('Update')
 
   def check_email(self):
-    if User.query.filter_by(email=field.data).first()
+    if User.query.filter_by(email=field.data).first():
       raise ValidationError('Your email has been registered already!')
 
   def check_username(self):
-    if User.query.filter_by(username=field.data).first()
+    if User.query.filter_by(username=field.data).first():
       raise ValidationError('Your username has been registered already!')

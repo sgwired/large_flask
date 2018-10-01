@@ -6,6 +6,7 @@ from flask_login import LoginManager
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'mysecret'
 
 ################
 ## DB SETUP
@@ -13,6 +14,7 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 db = SQLAlchemy(app)
 Migrate(app, db)
@@ -33,3 +35,7 @@ app.register_blueprint(core)
 
 from pupblog.error_pages.handlers import error_pages
 app.register_blueprint(error_pages)
+
+from pupblog.users.views import users
+app.register_blueprint(users)
+
