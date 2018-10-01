@@ -39,3 +39,7 @@ app.register_blueprint(error_pages)
 from pupblog.users.views import users
 app.register_blueprint(users)
 
+from pupblog.blogposts.views import blog_posts
+app.register_blueprint(blog_posts)
+
+
