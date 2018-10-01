@@ -10,7 +10,7 @@ blog_posts = Blueprint('blog_posts', __name__)
 @blog_posts.route('/crate', methods=['GET', 'POST'])
 @login_required
 def create_post():
-  form BlogPostForm()
+  form = BlogPostForm()
 
   if form.validate_on_submit():
 
@@ -54,7 +54,7 @@ def update_post(blog_post_id):
     flash('Blog Post Updated')
     return redirect(url_for('blog_posts.blog_post',blog_post_id=blog_post_id))  
 
-  elif request.method = 'GET':
+  elif request.method == 'GET':
     form.title.data = blog_post.title
     form.text.data = blog_post.text
   
