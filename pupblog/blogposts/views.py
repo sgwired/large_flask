@@ -22,7 +22,7 @@ def create_post():
 
     db.session.commit()
     flash('Blog Post Created')
-    return redirect('core.index')
+    return redirect(url_for('core.index'))
 
   return render_template('create_post.html', form=form)
 
