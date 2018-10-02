@@ -1,7 +1,7 @@
 from flask import render_template, request, Blueprint, abort
 from pupblog.models import BlogPost
 
-core = Blueprint('core', __name__)
+core = Blueprint('core',__name__)
 
 @core.route('/')
 def index():

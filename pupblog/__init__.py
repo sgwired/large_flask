@@ -28,10 +28,9 @@ login_manager.login_view = 'users.login'
 
 
 ###################
-
 from pupblog.core.views import core
+# from pupblog.core.views import core
 app.register_blueprint(core)
-
 
 from pupblog.error_pages.handlers import error_pages
 app.register_blueprint(error_pages)
